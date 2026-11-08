@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "myclient",
+  "version": "${version}",
+  "name": "MyClient",
+  "description": "Client cu GUI, module, setari per modul, teme si config.",
+  "authors": ["you"],
+  "license": "GPL-3.0",
+  "environment": "client",
+  "entrypoints": { "client": ["dev.myclient.MyClient"] },
+  "mixins": ["myclient.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
