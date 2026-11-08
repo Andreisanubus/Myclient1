@@ -20,6 +20,7 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
@@ -30,7 +31,9 @@ sourceSets {
             srcDirs = ['.']
             exclude 'build/**'
             exclude '.gradle/**'
+            exclude '.github/**'
         }
+
         resources {
             srcDirs = ['.']
             include 'fabric.mod.json'
@@ -46,6 +49,12 @@ processResources {
     filesMatching("fabric.mod.json") {
         expand "version": project.version
     }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 tasks.withType(JavaCompile).configureEach {
